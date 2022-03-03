@@ -24,4 +24,4 @@ Home Screen, Book Details Screen, Edit Screen and New Book Screen
 
 ## License
 
-MIT
+Apache License 2.0
