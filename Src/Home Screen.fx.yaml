@@ -1,0 +1,228 @@
+"'Home Screen' As screen.'phoneBrowseLayout_ver3.0'":
+    BackgroundImage: =gradient
+    Fill: =RGBA(255, 255, 255, 1)
+    ImagePosition: =ImagePosition.Fill
+
+    MainHeader As rectangle:
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =110
+        Width: =Parent.Width
+        ZIndex: =1
+
+    "'Refresh Background' As circle":
+        Fill: =RGBA(67, 109, 230, 1)
+        Height: =88
+        Width: =88
+        X: =Parent.Width - IconNewItem1.Width - Self.Width - 35
+        Y: =22
+        ZIndex: =2
+
+    Logo As label:
+        Color: =RGBA(67, 109, 230, 1)
+        Fill: =RGBA(58, 58, 58, 0)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =88
+        Size: =35
+        Text: ="BookShelf"
+        Width: =Parent.Width - Self.X - IconNewItem1.Width - IconRefresh1.Width
+        Wrap: =false
+        X: =30
+        Y: =22
+        ZIndex: =3
+
+    IconRefresh1 As icon.Reload:
+        AccessibleLabel: =Self.Tooltip
+        FocusedBorderThickness: =0
+        Height: =88
+        Icon: =Icon.Reload
+        OnSelect: =Refresh([@BookShelf])
+        PaddingBottom: =22
+        PaddingLeft: =22
+        PaddingRight: =22
+        PaddingTop: =22
+        TabIndex: =0
+        Tooltip: ="Refresh list"
+        Width: =88
+        X: =Parent.Width - IconNewItem1.Width - Self.Width - 35
+        Y: =22
+        ZIndex: =4
+
+    "'New Item Background' As circle":
+        Fill: =RGBA(67, 109, 230, 1)
+        Height: =88
+        Width: =88
+        X: =Parent.Width - Self.Width - 20
+        Y: =22
+        ZIndex: =5
+
+    IconNewItem1 As icon.Add:
+        AccessibleLabel: =Self.Tooltip
+        DisplayMode: =If(DataSourceInfo([@BookShelf], DataSourceInfo.CreatePermission), DisplayMode.Edit, DisplayMode.Disabled)
+        FocusedBorderThickness: =0
+        Height: =88
+        Icon: =Icon.Add
+        OnSelect: =NewForm(NewBookForm);Navigate('New Book Screen', ScreenTransition.None)
+        PaddingBottom: =24
+        PaddingLeft: =24
+        PaddingRight: =24
+        PaddingTop: =24
+        TabIndex: =0
+        Tooltip: ="Create new item"
+        Width: =88
+        X: =Parent.Width - Self.Width - 20
+        Y: =22
+        ZIndex: =6
+
+    Container2 As groupContainer.horizontalAutoLayoutContainer:
+        Height: =Parent.Height - MainHeader.Height
+        LayoutAlignItems: =LayoutAlignItems.Center
+        LayoutDirection: =LayoutDirection.Vertical
+        LayoutMode: =LayoutMode.Auto
+        Width: =Parent.Width
+        Y: =MainHeader.Height
+        ZIndex: =7
+
+        Container4 As groupContainer.horizontalAutoLayoutContainer:
+            FillPortions: =0.1
+            Height: =
+            LayoutAlignItems: =LayoutAlignItems.Center
+            LayoutJustifyContent: =LayoutJustifyContent.Center
+            LayoutMinHeight: =80
+            LayoutMinWidth: =250
+            LayoutMode: =LayoutMode.Auto
+            ZIndex: =1
+
+            Container5 As groupContainer.manualLayoutContainer:
+                AlignInContainer: =AlignInContainer.Center
+                FillPortions: =0
+                Height: =Parent.Height
+                LayoutMinHeight: =20
+                LayoutMinWidth: =250
+                Width: =Parent.Width - 50
+                ZIndex: =3
+
+                TextSearchBox1 As text:
+                    Align: =Left
+                    BorderColor: =RGBA(255, 255, 255, 1)
+                    BorderThickness: =0
+                    Default: =""
+                    DelayOutput: =true
+                    DisabledBorderColor: =RGBA(255, 255, 255, 1)
+                    Height: =68
+                    HintText: ="Search by Title, Author, ISBN or Genre"
+                    HoverBorderColor: =RGBA(255, 255, 255, 1)
+                    HoverFill: =RGBA(202, 202, 202, 1)
+                    PaddingLeft: =70
+                    PressedBorderColor: =RGBA(255,255,255,1)
+                    RadiusBottomLeft: =50
+                    RadiusBottomRight: =50
+                    RadiusTopLeft: =50
+                    RadiusTopRight: =50
+                    Size: =21
+                    Width: =Parent.Width
+                    Y: =26
+                    ZIndex: =1
+
+                SearchIcon1 As icon.Search:
+                    Color: =RGBA(130, 130, 130, 1)
+                    Height: =Self.Width
+                    Icon: =Icon.Search
+                    PaddingBottom: =14
+                    PaddingLeft: =14
+                    PaddingRight: =14
+                    PaddingTop: =14
+                    Tooltip: ="Search"
+                    Width: =TextSearchBox1.Height
+                    X: =TextSearchBox1.X
+                    Y: =TextSearchBox1.Y
+                    ZIndex: =2
+
+        "BrowseGallery1 As gallery.'BrowseLayout_Vertical_ThreeTextVariant_ver4.0'":
+            AlignInContainer: =AlignInContainer.SetByContainer
+            Height: =Parent.Height - Container4.Height
+            Items: =SortByColumns(Search([@BookShelf], TextSearchBox1.Text, "cr149_author","cr149_genre","cr149_isbn"), "cr149_author")
+            Layout: =Layout.Vertical
+            LayoutMinHeight: =287
+            LayoutMinWidth: =320
+            OnSelect: =Navigate('Book Details Screen', ScreenTransition.None)
+            ShowScrollbar: =false
+            TemplatePadding: =0
+            TemplateSize: =Min(168, Self.Height - 60)
+            Width: =Parent.Width - 50
+            X: =18
+            Y: =MainHeader.Height + Container4.Height
+            ZIndex: =2
+
+            Title As label:
+                Font: =Font.'Segoe UI'
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =26
+                Text: =ThisItem.Title
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth - 104
+                X: =1
+                Y: =31
+                ZIndex: =1
+
+            Author As label:
+                Height: =Self.Size * 1.8
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =22
+                Text: =ThisItem.Author
+                VerticalAlign: =VerticalAlign.Top
+                Width: =Parent.TemplateWidth - 104
+                X: =1
+                Y: =77
+                ZIndex: =2
+
+            Genre As label:
+                DisplayMode: =DisplayMode.View
+                Height: =51
+                OnSelect: =Select(Parent)
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =19
+                Text: =ThisItem.Genre
+                Width: =Parent.TemplateWidth - 104
+                X: =1
+                Y: =116
+                ZIndex: =3
+
+            NextArrow1 As icon.ChevronRight:
+                AccessibleLabel: =Self.Tooltip
+                Color: =RGBA(67, 109, 230, 1)
+                FocusedBorderThickness: =0
+                Height: =70
+                Icon: =Icon.ChevronRight
+                OnSelect: =Select(Parent)
+                PaddingBottom: =10
+                PaddingLeft: =10
+                PaddingRight: =10
+                PaddingTop: =10
+                TabIndex: =0
+                Tooltip: ="View item details"
+                Width: =70
+                X: =Parent.Width - Self.Width
+                Y: =46
+                ZIndex: =4
+
+            Separator1 As rectangle:
+                Fill: =RGBA(67, 109, 230, 1)
+                Height: =1
+                OnSelect: =Select(Parent)
+                Width: =Parent.TemplateWidth
+                Y: =Parent.TemplateHeight - 1
+                ZIndex: =5
+

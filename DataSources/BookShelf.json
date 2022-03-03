@@ -1,0 +1,100 @@
+[
+  {
+    "CdsFCBContext": "{\"FileType\":true,\"ImageExternalStorage\":true}",
+    "EntitySetName": "cr149_bookshelfs",
+    "IsHidden": false,
+    "IsSampleData": false,
+    "IsWritable": true,
+    "LogicalName": "cr149_bookshelf",
+    "Name": "BookShelf",
+    "NativeCDSDataSourceInfoNameMapping": {
+      "cr149_author": "Author",
+      "cr149_bookshelf_AsyncOperations": "System Jobs",
+      "cr149_bookshelf_BulkDeleteFailures": "Bulk Delete Failures",
+      "cr149_bookshelf_connections1": "Connections (cr149_bookshelf_connections1)",
+      "cr149_bookshelf_connections2": "Connections (cr149_bookshelf_connections2)",
+      "cr149_bookshelf_DuplicateBaseRecord": "Duplicate Records (cr149_bookshelf_DuplicateBaseRecord)",
+      "cr149_bookshelf_DuplicateMatchingRecord": "Duplicate Records (cr149_bookshelf_DuplicateMatchingRecord)",
+      "cr149_bookshelf_MailboxTrackingFolders": "Mailbox Auto Tracking Folders",
+      "cr149_bookshelf_PrincipalObjectAttributeAccesses": "Field Sharing",
+      "cr149_bookshelf_ProcessSession": "Process Sessions",
+      "cr149_bookshelf_SyncErrors": "Sync Errors",
+      "cr149_bookshelfid": "BookShelf",
+      "cr149_copies": "Copies",
+      "cr149_genre": "Genre",
+      "cr149_isbn": "ISBN",
+      "cr149_summary": "Summary",
+      "cr149_title": "Title",
+      "createdby": "Created By",
+      "createdon": "Created On",
+      "createdonbehalfby": "Created By (Delegate)",
+      "importsequencenumber": "Import Sequence Number",
+      "modifiedby": "Modified By",
+      "modifiedon": "Modified On",
+      "modifiedonbehalfby": "Modified By (Delegate)",
+      "organizationid": "Organization Id",
+      "overriddencreatedon": "Record Created On",
+      "statecode": "Status",
+      "statuscode": "Status Reason",
+      "timezoneruleversionnumber": "Time Zone Rule Version Number",
+      "utcconversiontimezonecode": "UTC Conversion Time Zone Code",
+      "versionnumber": "Version Number"
+    },
+    "PreferredName": "BookShelf",
+    "Type": "NativeCDSDataSourceInfo"
+  },
+  {
+    "DisplayName": "BookShelf (Views)",
+    "Name": "_cr149_bookshelf_views",
+    "RelatedEntityName": "BookShelf",
+    "TrimmedViewName": true,
+    "Type": "ViewInfo",
+    "ViewInfoNameMapping": {
+      "06704126-6bb5-4b6b-9c77-4f3a9578646b": "BookShelf Associated View",
+      "65648067-1c46-4271-a37e-f7c1f73ec98e": "Inactive BookShelf",
+      "79865e9f-fd12-435c-8590-dd192327272c": "BookShelf Lookup View",
+      "a709f011-010a-4bba-9fcd-1d0c3e968cf8": "Active BookShelf",
+      "c3285ea4-1a9c-41eb-8f23-a332ada2bfd3": "BookShelf Advanced Find View"
+    }
+  },
+  {
+    "DisplayName": "Status (BookShelf)",
+    "Name": "cr149_bookshelf_statecode",
+    "OptionSetInfoNameMapping": {
+      "0": "Active",
+      "1": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statecode",
+        "OptionSetReferenceEntityName": "BookShelf"
+      }
+    },
+    "OptionSetTypeKey": "StateType",
+    "RelatedColumnInvariantName": "statecode",
+    "RelatedEntityName": "BookShelf",
+    "Type": "OptionSetInfo"
+  },
+  {
+    "DisplayName": "Status Reason (BookShelf)",
+    "Name": "cr149_bookshelf_statuscode",
+    "OptionSetInfoNameMapping": {
+      "1": "Active",
+      "2": "Inactive"
+    },
+    "OptionSetIsBooleanValued": false,
+    "OptionSetIsGlobal": false,
+    "OptionSetReference": {
+      "OptionSetReferenceItem0": {
+        "OptionSetReferenceColumnName": "statuscode",
+        "OptionSetReferenceEntityName": "BookShelf"
+      }
+    },
+    "OptionSetTypeKey": "StatusType",
+    "RelatedColumnInvariantName": "statuscode",
+    "RelatedEntityName": "BookShelf",
+    "Type": "OptionSetInfo"
+  }
+]

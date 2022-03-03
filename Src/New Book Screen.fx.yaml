@@ -1,0 +1,551 @@
+"'New Book Screen' As screen.'phoneDetailEditLayout_ver3.0'":
+    BackgroundImage: =gradient
+    ImagePosition: =ImagePosition.Fill
+
+    Header4 As rectangle:
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =110
+        Width: =Parent.Width
+        ZIndex: =1
+
+    LblAppName3_2 As label:
+        Color: =RGBA(67, 109, 230, 1)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =95
+        PaddingLeft: =30
+        Size: =32
+        Text: ="Add New Book"
+        Width: =Parent.Width
+        Wrap: =false
+        Y: =15
+        ZIndex: =4
+
+    NewBookForm As form:
+        DataSource: =[@BookShelf]
+        Height: =Parent.Height - NewBookForm.Y
+        Item: =BrowseGallery1.Selected
+        OnSuccess: =Back()
+        Width: =Parent.Width
+        Y: =Header4.Height
+        ZIndex: =5
+
+        Title_DataCard2_2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_title"
+            Default: =ThisItem.Title
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_title")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@BookShelf], DataSourceInfo.MaxLength, "cr149_title")
+            Required: =true
+            Update: =DataCardValue9_2.Text
+            Width: =Parent.Width
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey9_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(128, 128, 128, 1)
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue9_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =70
+                HintText: =""
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey9_2.Y + DataCardKey9_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage2_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue9_2.Y + DataCardValue9_2.Height
+                ZIndex: =3
+
+            StarVisible2_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey9_2.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                X: =84
+                Y: =10
+                ZIndex: =4
+
+        Author_DataCard2_2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_author"
+            Default: =ThisItem.Author
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_author")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@BookShelf], DataSourceInfo.MaxLength, "cr149_author")
+            Required: =true
+            Update: =DataCardValue10_2.Text
+            Width: =Parent.Width
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey10_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(128, 128, 128, 1)
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue10_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =70
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey10_2.Y + DataCardKey10_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage3_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue10_2.Y + DataCardValue10_2.Height
+                ZIndex: =3
+
+            StarVisible3_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey10_2.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                X: =124
+                Y: =10
+                ZIndex: =4
+
+        ISBN_DataCard2_2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_isbn"
+            Default: =ThisItem.ISBN
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_isbn")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@BookShelf], DataSourceInfo.MaxLength, "cr149_isbn")
+            Required: =true
+            Update: =DataCardValue3_2.Text
+            Width: =Parent.Width
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey3_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(128, 128, 128, 1)
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue3_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =varScan
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Format: =TextFormat.Number
+                Height: =70
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey3_2.Y + DataCardKey3_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage1_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue3_2.Y + DataCardValue3_2.Height
+                ZIndex: =3
+
+            StarVisible1_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey3_2.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                X: =96
+                Y: =10
+                ZIndex: =4
+
+            Image1 As image:
+                AutoDisableOnSelect: =false
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledFill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                HoverBorderColor: =RGBA(0,0,0,0)
+                Image: ='barcode-scan'
+                PressedBorderColor: =RGBA(0,0,0,0)
+                Width: =64
+                X: =BarcodeScanner1.X + 5
+                Y: =63
+                ZIndex: =5
+
+            BarcodeScanner1 As barcodeScanner:
+                BorderThickness: =0
+                DisabledBorderColor: =RGBA(0, 0, 0, 0)
+                DisabledColor: =RGBA(0, 0, 0, 0)
+                Fill: =RGBA(0, 0, 0, 0)
+                Height: =70
+                HoverBorderColor: =RGBA(0,0,0,0)
+                HoverColor: =RGBA(0, 0, 0, 0)
+                HoverFill: =RGBA(247, 247, 247, 0.5)
+                OnScan: =Set(varScan, BarcodeScanner1.Value)
+                PressedBorderColor: =RGBA(0,0,0,0)
+                PressedColor: =RGBA(0,0,0,0)
+                PressedFill: =RGBA(247, 247, 247, 0.5)
+                Size: =24
+                Text: =""
+                Width: =75
+                X: =DataCardValue3_2.Width + 30 - Self.Width
+                Y: =63
+                ZIndex: =6
+
+        Genre_DataCard2_2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_genre"
+            Default: =ThisItem.Genre
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_genre")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@BookShelf], DataSourceInfo.MaxLength, "cr149_genre")
+            Required: =true
+            Update: =DataCardValue11_2.Text
+            Width: =Parent.Width
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey11_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(128, 128, 128, 1)
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue11_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =70
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey11_2.Y + DataCardKey11_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage4_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue11_2.Y + DataCardValue11_2.Height
+                ZIndex: =3
+
+            StarVisible4_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey11_2.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                X: =113
+                Y: =DataCardKey11_2.Y
+                ZIndex: =4
+
+        Copies_DataCard2_2 As typedDataCard.numberEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_copies"
+            Default: =ThisItem.Copies
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_copies")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            Required: =true
+            Update: =Value(DataCardValue12_2.Text)
+            Width: =Parent.Width
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey12_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(128, 128, 128, 1)
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue12_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Format: =TextFormat.Number
+                Height: =70
+                PaddingLeft: =5
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey12_2.Y + DataCardKey12_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage5_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue12_2.Y + DataCardValue12_2.Height
+                ZIndex: =3
+
+            StarVisible5_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey12_2.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                X: =121
+                Y: =DataCardKey12_2.Y
+                ZIndex: =4
+
+        Summary_DataCard2_2 As typedDataCard.textualEditCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_summary"
+            Default: =ThisItem.Summary
+            DisplayMode: =Parent.DisplayMode
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_summary")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =50
+            MaxLength: =DataSourceInfo([@BookShelf], DataSourceInfo.MaxLength, "cr149_summary")
+            Required: =false
+            Update: =DataCardValue13_2.Text
+            Width: =Parent.Width
+            X: =0
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey13_2 As label:
+                AutoHeight: =true
+                Color: =RGBA(128, 128, 128, 1)
+                Height: =48
+                Size: =21
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =10
+                ZIndex: =1
+
+            DataCardValue13_2 As text:
+                BorderColor: =If(IsBlank(Parent.Error), Parent.BorderColor, Color.Red)
+                Default: =Parent.Default
+                DelayOutput: =true
+                DisplayMode: =Parent.DisplayMode
+                Height: =70
+                MaxLength: =Parent.MaxLength
+                PaddingLeft: =5
+                RadiusBottomLeft: =10
+                RadiusBottomRight: =10
+                RadiusTopLeft: =10
+                RadiusTopRight: =10
+                Size: =21
+                Tooltip: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey13_2.Y + DataCardKey13_2.Height + 5
+                ZIndex: =2
+
+            ErrorMessage6_2 As label:
+                AutoHeight: =true
+                Height: =10
+                Live: =Live.Assertive
+                PaddingBottom: =0
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =24
+                Text: =Parent.Error
+                Visible: =Parent.DisplayMode=DisplayMode.Edit
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardValue13_2.Y + DataCardValue13_2.Height
+                ZIndex: =3
+
+            StarVisible6_2 As label:
+                Align: =Align.Center
+                Height: =DataCardKey13_2.Height
+                Size: =21
+                Text: ="*"
+                Visible: =And(Parent.Required, Parent.DisplayMode=DisplayMode.Edit)
+                Width: =30
+                Wrap: =false
+                Y: =DataCardKey13_2.Y
+                ZIndex: =4
+
+    "'Cancel Btn_1' As button":
+        BorderColor: =RGBA(56, 96, 178, 1)
+        BorderThickness: =5
+        Height: =70
+        OnSelect: =ResetForm(NewBookForm);Back();Set(varScan, Blank())
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =24
+        Text: ="Cancel"
+        Width: =200
+        X: =Parent.Width/2 - Self.Width - 35
+        Y: =Parent.Height - Self.Height - 50
+        ZIndex: =6
+
+    "'Save Btn_1' As button":
+        Height: =70
+        OnSelect: |-
+            =SubmitForm(NewBookForm);
+            Notify(
+                "Book Added",
+                NotificationType.Success,
+                2000
+            )
+        RadiusBottomLeft: =50
+        RadiusBottomRight: =50
+        RadiusTopLeft: =50
+        RadiusTopRight: =50
+        Size: =24
+        Text: ="Save"
+        Width: =200
+        X: =Parent.Width/2 + 35
+        Y: =Parent.Height - Self.Height - 50
+        ZIndex: =7
+

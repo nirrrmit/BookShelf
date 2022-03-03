@@ -1,0 +1,447 @@
+"'Book Details Screen' As screen.'phoneDetailViewLayout_ver3.0'":
+    BackgroundImage: =gradient
+    ImagePosition: =ImagePosition.Fill
+
+    Header As rectangle:
+        BorderColor: =RGBA(255, 255, 255, 1)
+        Fill: =RGBA(0, 0, 0, 0)
+        Height: =110
+        Width: =Parent.Width
+        ZIndex: =1
+
+    "'Back Arrow' As icon.ChevronLeft":
+        AccessibleLabel: =Self.Tooltip
+        Color: =RGBA(67, 109, 230, 1)
+        FocusedBorderThickness: =0
+        Height: =88
+        Icon: =Icon.ChevronLeft
+        OnSelect: =Navigate('Home Screen', ScreenTransition.None)
+        PaddingBottom: =24
+        PaddingLeft: =24
+        PaddingRight: =24
+        PaddingTop: =24
+        TabIndex: =0
+        Tooltip: ="Back to list"
+        Width: =88
+        Y: =22
+        ZIndex: =2
+
+    "'Edit icon back' As circle":
+        Fill: =RGBA(67, 109, 230, 1)
+        Height: =88
+        Width: =88
+        X: =Parent.Width - Self.Width - 20
+        Y: =22
+        ZIndex: =3
+
+    "'Edit icon' As icon.Edit":
+        AccessibleLabel: =Self.Tooltip
+        DisplayMode: =If(DataSourceInfo([@BookShelf], DataSourceInfo.EditPermission), DisplayMode.Edit, DisplayMode.Disabled)
+        Height: =88
+        Icon: =Icon.Edit
+        OnSelect: =EditForm(EditForm1);Navigate('Edit Book Screen', ScreenTransition.None)
+        PaddingBottom: =24
+        PaddingLeft: =24
+        PaddingRight: =24
+        PaddingTop: =24
+        TabIndex: =0
+        Tooltip: ="Edit this item"
+        Width: =88
+        X: =Parent.Width - Self.Width - 20
+        Y: =22
+        ZIndex: =4
+
+    "'Delete icon back' As circle":
+        Fill: =RGBA(67, 109, 230, 1)
+        Height: =88
+        Width: =88
+        X: =Parent.Width - IconNewItem1.Width - Self.Width - 35
+        Y: =22
+        ZIndex: =5
+
+    "'Delete icon' As icon.Trash":
+        AccessibleLabel: =Self.Tooltip
+        DisplayMode: =If(!IsBlank(BrowseGallery1.Selected) && DataSourceInfo([@BookShelf], DataSourceInfo.DeletePermission), DisplayMode.Edit, DisplayMode.Disabled)
+        Height: =88
+        Icon: =Icon.Trash
+        OnSelect: =Set(varShowPopup, true);
+        PaddingBottom: =24
+        PaddingLeft: =24
+        PaddingRight: =24
+        PaddingTop: =24
+        TabIndex: =0
+        Tooltip: ="Delete this item"
+        Width: =88
+        X: =Parent.Width - 'Edit icon'.Width - Self.Width - 35
+        Y: =22
+        ZIndex: =6
+
+    Label As label:
+        Color: =RGBA(67, 109, 230, 1)
+        DisabledBorderColor: =RGBA(0, 0, 0, 1)
+        Font: =Font.'Lato Black'
+        FontWeight: =FontWeight.Bold
+        Height: =88
+        Size: =28
+        Text: ="Book Details"
+        Width: =323
+        Wrap: =false
+        X: =80
+        Y: =22
+        ZIndex: =7
+
+    DetailForm1 As formViewer:
+        DataSource: =[@BookShelf]
+        Height: =Parent.Height - Header.Height
+        Item: =BrowseGallery1.Selected
+        Width: =Parent.Width
+        Y: =110
+        ZIndex: =8
+
+        Title_DataCard1 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_title"
+            Default: =ThisItem.Title
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_title")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =140
+            Required: =true
+            Width: =Parent.Width
+            WidthFit: =false
+            X: =0
+            Y: =0
+            ZIndex: =1
+
+            DataCardKey8 As label:
+                AutoHeight: =true
+                Color: =RGBA(148, 148, 148, 1)
+                Font: =Font.Verdana
+                Height: =48
+                PaddingBottom: =6
+                PaddingLeft: =0
+                Size: =22
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =57
+                ZIndex: =1
+
+            DataCardValue8 As label:
+                DisplayMode: =Parent.DisplayMode
+                Font: =Font.Lato
+                Height: =83
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =26
+                Text: =Parent.Default
+                VerticalAlign: =VerticalAlign.Top
+                Width: =580
+                X: =30
+                Y: =104
+                ZIndex: =2
+
+        Author_DataCard3 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_author"
+            Default: =ThisItem.Author
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_author")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =true
+            Width: =Parent.Width
+            X: =0
+            Y: =1
+            ZIndex: =1
+
+            DataCardKey7 As label:
+                AutoHeight: =true
+                Color: =RGBA(148, 148, 148, 1)
+                Font: =Font.Verdana
+                Height: =48
+                PaddingLeft: =0
+                Size: =22
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =33
+                ZIndex: =1
+
+            DataCardValue7 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Font: =Font.Lato
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =26
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey7.Y + DataCardKey7.Height + 5
+                ZIndex: =2
+
+        ISBN_DataCard3 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_isbn"
+            Default: =ThisItem.ISBN
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_isbn")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =true
+            Width: =Parent.Width
+            X: =0
+            Y: =2
+            ZIndex: =1
+
+            DataCardKey14 As label:
+                AutoHeight: =true
+                Color: =RGBA(148, 148, 148, 1)
+                Font: =Font.Verdana
+                Height: =48
+                PaddingLeft: =0
+                Size: =22
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =31
+                ZIndex: =1
+
+            DataCardValue14 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Font: =Font.Lato
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =26
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey14.Y + DataCardKey14.Height + 5
+                ZIndex: =2
+
+        Genre_DataCard3 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_genre"
+            Default: =ThisItem.Genre
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_genre")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =true
+            Width: =Parent.Width
+            X: =0
+            Y: =3
+            ZIndex: =1
+
+            DataCardKey15 As label:
+                AutoHeight: =true
+                Color: =RGBA(148, 148, 148, 1)
+                Font: =Font.Verdana
+                Height: =48
+                PaddingLeft: =0
+                Size: =22
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =20
+                ZIndex: =1
+
+            DataCardValue15 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Font: =Font.Lato
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =26
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey15.Y + DataCardKey15.Height + 5
+                ZIndex: =2
+
+        Copies_DataCard3 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_copies"
+            Default: =ThisItem.Copies
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_copies")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =true
+            Width: =Parent.Width
+            X: =0
+            Y: =4
+            ZIndex: =1
+
+            DataCardKey16 As label:
+                AutoHeight: =true
+                Color: =RGBA(148, 148, 148, 1)
+                Font: =Font.Verdana
+                Height: =48
+                PaddingLeft: =0
+                Size: =22
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =20
+                ZIndex: =1
+
+            DataCardValue16 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Font: =Font.Lato
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =26
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey16.Y + DataCardKey16.Height + 5
+                ZIndex: =2
+
+        Summary_DataCard3 As typedDataCard.textualViewCard:
+            BorderStyle: =BorderStyle.Solid
+            DataField: ="cr149_summary"
+            Default: =ThisItem.Summary
+            DisplayMode: =DisplayMode.View
+            DisplayName: =DataSourceInfo([@BookShelf],DataSourceInfo.DisplayName,"cr149_summary")
+            Fill: =RGBA(0, 0, 0, 0)
+            Height: =40
+            Required: =false
+            Visible: =If(IsBlank(ThisItem.Summary),false,true)
+            Width: =Parent.Width
+            X: =0
+            Y: =5
+            ZIndex: =1
+
+            DataCardKey17 As label:
+                AutoHeight: =true
+                Color: =RGBA(148, 148, 148, 1)
+                Font: =Font.Verdana
+                Height: =48
+                PaddingLeft: =0
+                Size: =22
+                Text: =Parent.DisplayName
+                Width: =Parent.Width - 60
+                Wrap: =false
+                X: =30
+                Y: =20
+                ZIndex: =1
+
+            DataCardValue17 As label:
+                AutoHeight: =true
+                DisplayMode: =Parent.DisplayMode
+                Font: =Font.Lato
+                PaddingLeft: =0
+                PaddingRight: =0
+                PaddingTop: =0
+                Size: =26
+                Text: =Parent.Default
+                Width: =Parent.Width - 60
+                X: =30
+                Y: =DataCardKey17.Y + DataCardKey17.Height + 5
+                ZIndex: =2
+
+    AlertDelete As group:
+        Height: =5
+        Width: =5
+        X: =60
+        Y: =60
+        ZIndex: =14
+
+        "'Alert Overlay' As rectangle":
+            Fill: =RGBA(0, 0, 0, 0.4)
+            Height: =Parent.Height
+            Visible: =varShowPopup
+            Width: =Parent.Width
+            Y: =Parent.Height/2 - Self.Height/2
+            ZIndex: =9
+
+        DeleteAlertBox As groupContainer.manualLayoutContainer:
+            Height: =310
+            Width: =Parent.Width - 140
+            X: =Parent.Width/2 - Self.Width/2
+            Y: =Parent.Height/2 - Self.Height/2
+            ZIndex: =10
+
+            "'Alert Box' As rectangle":
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =Parent.Height
+                Visible: =varShowPopup
+                Width: =Parent.Width
+                X: =Parent.Width/2 - Self.Width/2
+                ZIndex: =1
+
+            "'Alert Heading' As label":
+                Align: =Align.Center
+                Fill: =RGBA(237, 237, 237, 1)
+                Font: =Font.Verdana
+                Height: =62
+                Size: =24
+                Text: ="Delete Book"
+                Visible: =varShowPopup
+                Width: =Parent.Width
+                X: =Parent.Width/2 - Self.Width/2
+                ZIndex: =2
+
+            "'Alert msg' As label":
+                Align: =Align.Center
+                Font: =Font.Lato
+                Height: =110
+                Size: =21
+                Text: ="Are you sure you want to delete the book ?"
+                Visible: =varShowPopup
+                Width: =Parent.Width
+                X: =Parent.Width/2 - Self.Width/2
+                Y: =80
+                ZIndex: =3
+
+            "'Alert Cancel Btn' As button":
+                BorderColor: =RGBA(56, 96, 178, 100)
+                BorderThickness: =5
+                Color: =RGBA(56, 96, 178, 1)
+                Fill: =RGBA(255, 255, 255, 1)
+                Height: =72
+                OnSelect: =Set(varShowPopup, false)
+                RadiusBottomLeft: =50
+                RadiusBottomRight: =50
+                RadiusTopLeft: =50
+                RadiusTopRight: =50
+                Size: =24
+                Text: ="Cancel"
+                Visible: =varShowPopup
+                Width: =156
+                X: =Parent.Width/2 - Self.Width - 25
+                Y: =Parent.Height - Self.Height - 40
+                ZIndex: =4
+
+            "'Alert Delete Btn' As button":
+                Height: =72
+                OnSelect: |-
+                    =Remove([@BookShelf], BrowseGallery1.Selected); If (IsEmpty(Errors([@BookShelf], BrowseGallery1.Selected)), Back());
+                    Set(varShowPopup, false);
+                    Notify("Book Deleted", Success, 3000)
+                RadiusBottomLeft: =50
+                RadiusBottomRight: =50
+                RadiusTopLeft: =50
+                RadiusTopRight: =50
+                Size: =24
+                Text: ="Delete"
+                Visible: =varShowPopup
+                Width: =156
+                X: =Parent.Width/2 + 25
+                Y: =Parent.Height - Self.Height - 40
+                ZIndex: =5
+
